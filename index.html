@@ -7,7 +7,7 @@
     <title>Cartão Nubank</title>
     <style>
         body{
-            background-color: rgb(197, 169, 243);
+            background-color: rgb(34, 21, 51);
             font-family: Arial, Helvetica, sans-serif;
             color: white;
             display: flex;
@@ -23,6 +23,7 @@
             height: 25em;
             box-shadow: 5px 8px 8px #000;
             margin-top: 100px;
+            transition: transform 300ms;
         }
 
         img[alt=master] {
@@ -59,6 +60,14 @@
         .footer p{
             margin-left: 1em;
         }
+
+        .cores {
+            width: 40px;
+            height: 40px;
+            margin-top: 100px;
+
+        }
+        
     </style>
 </head>
 <body>
@@ -75,12 +84,20 @@
             <p>Jonathan Baer</p>
             <img src="nubank_logo.png" alt="logo">
         </div>
+        
     </div>
+    <div class="format_cores">
+        <input class="cores" type="radio" id="cor1">
+        <input class="cores" type="radio" id="cor2">
+        
+    </div>
+    
     <script>
         const card = document.querySelector('.container');
 
         card.addEventListener("mousemove", cardEffect);
         card.addEventListener("mouseleave", cardBack);
+        card.addEventListener("mouseenter", cardEnter);
 
         function cardEffect(event) {
             const cardWidth = card.offsetWidth;
@@ -99,7 +116,20 @@
         }
 
         function cardBack(event) {
-            card.style.transform = `perspective(500px) rotateX(0deg) rotateY(0deg)`;      
+            card.style.transform = `perspective(500px) rotateX(0deg) rotateY(0deg)`;
+            cardTransition();      
+        }
+
+        function cardTransition(event) {
+            clearInterval(card.transitionId);
+            card.style.transition = `transform 400ms`;
+            card.transitionId = setTimeout(() => {
+                card.style.transition = '';
+            },400);
+            
+        }
+        function cardEnter (event){
+            cardTransition();
         }
     </script>
 </body>
