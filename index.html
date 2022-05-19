@@ -61,11 +61,6 @@
             margin-left: 1em;
         }
 
-        .format_cores {
-            gap: 7px;
-            display: flex;
-            
-        }
         
 
         .cores {
@@ -122,7 +117,7 @@
     
     <script>
         const card = document.querySelector('.container');
-        const cores1 = document.querySelector('.cores1')
+        
 
         card.addEventListener("mousemove", cardEffect);
         card.addEventListener("mouseleave", cardBack);
@@ -161,9 +156,6 @@
             cardTransition();
         }
 
-        cores1.onclick = function {
-            this.classList.toggle('active')
-        }
     </script>
 </body>
 </html>
